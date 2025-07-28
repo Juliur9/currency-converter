@@ -1,11 +1,13 @@
-export function CurrencyOptions() {
+export function CurrencyOptions({ onChange }) {
   return (
     <select
-      className="my-1 w-[330px] rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-base text-gray-800 focus:border-blue-500"
+      className="m-1 w-full rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-base text-gray-800 focus:border-blue-500"
       name="currencies"
       id="currencies"
+      onChange={(e) => onChange(e.target.value)}
+      defaultValue={'USD'}
     >
-      <option value="USD" selected="selected" label="US dollar">
+      <option value="USD" label="US dollar">
         USD
       </option>
       <option value="EUR" label="Euro">
