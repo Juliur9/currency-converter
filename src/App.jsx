@@ -1,6 +1,26 @@
 import { CurrencyOptions } from './CurrencyOptions'
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.exchangeratesapi.io/v1/latest?access_key=${import.meta.env.VITE_API_KEY}`
+        )
+        const result = await response.json()
+        setData(result)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+    fetchData()
+  }, [])
+
+  console.log(data)
+
   return (
     <>
       <div className="mt-10 flex flex-col items-center bg-gray-50">
